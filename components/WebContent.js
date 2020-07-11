@@ -146,6 +146,7 @@ class WebContent extends React.Component {
 		);
    }
 }
+/*spinner component*/
 class Spinner extends React.Component {
 	render(){
 		return(

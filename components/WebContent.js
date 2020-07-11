@@ -141,7 +141,7 @@ class WebContent extends React.Component {
 				   </div>
 				     
 			         {this.state.data.map((item,id) => 
-			             <DataRow key = {id-1} data = {item} /> )}
+			             <DataRow key = {id} data = {item} /> )}
 			 </div>
 		);
    }

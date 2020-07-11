@@ -5,9 +5,10 @@ Features are
 
 * After search showing results with restaurant details.
 
-* Below is the new features that are going to integrate soon
-	Spinner
-	pager
+* Spinner code added
+
+* Below is the new feature that are going to integrate soon
+	
 	user rating
 
 New Suggestions are welcome.

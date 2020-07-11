@@ -43,7 +43,8 @@ class WebContent extends React.Component {
         this.setState({
             cityId: '',
             name: '',
-            message:'Data saved sucessfully.'
+            message:'Data saved sucessfully.',
+            isLoaded:true
         })
           let flash =  document.getElementsByClassName("alert-success")[0];
           flash.style.display = "block";
@@ -53,7 +54,7 @@ class WebContent extends React.Component {
           return fetch("https://developers.zomato.com/api/v2.1/search?entity_id="+cityId+"&entity_type=city&q="+name+"&start=0&count=50",{
     	 'method':'GET',
     	headers:{
-    	'user-key':'your api key',
+    	'user-key':'87e52a3aed2978f12ba76200bad44abf',
     	 'Accept': 'application/json',
     	},
     })
@@ -61,7 +62,7 @@ class WebContent extends React.Component {
       	return res.json()
       	
       })
-      .then(response => this.setState({data:response.restaurants,jlength:response.results_shown}))
+      .then(response => this.setState({data:response.restaurants,jlength:response.results_shown,isLoaded:false}))
       .catch(error => {
       	console.log("error");
       });	
@@ -124,13 +125,12 @@ class WebContent extends React.Component {
 								<option value="5">Pune</option>
 							</select>
 						  </div>								  
-						  
   						  <div className="input-group mb-2 mr-sm-2">
    							<input type="text" className="form-control form-control-lg col-12" id="getText" value={this.state.name} onChange={this.onChangeName} />
   						  </div>
   						    <button type="submit" className="btn btn-primary mb-2 btn-lg" id="getMessage">Submit</button>
+  						       {this.state.isLoaded && <Spinner />}
 					    </form>
-
 				    </div>
 					<div className="col-md-6 image-nopadding">
 						<img alt="Bootstrap Image Preview" src={image01} className="img-fluid"/>
@@ -139,11 +139,23 @@ class WebContent extends React.Component {
 				   <div className="row">
 				   		<h5 className="col-6 offset-3 mb-4">{shown ? results : 'No'} results shown</h5>
 				   </div>
+				     
 			         {this.state.data.map((item,id) => 
-			             <DataRow key = {id} data = {item} /> )}
+			             <DataRow key = {id-1} data = {item} /> )}
 			 </div>
 		);
    }
+}
+class Spinner extends React.Component {
+	render(){
+		return(
+			<div class="text-center ml-2">
+  				<div class="spinner-border" role="status">
+    				<span class="sr-only">Loading...</span>
+  				</div>
+			</div>
+			);
+	}
 }
 class DataRow extends React.Component {
   render() {

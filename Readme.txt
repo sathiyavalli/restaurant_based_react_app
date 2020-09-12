@@ -1,4 +1,4 @@
-This is restaurant based responsive web app built by using react and bootstrap by integrating the zomato api before use this api register in developer zomato link and get the api key.
+This is responsive restaurant web app built by using react and bootstrap, and front-end tech stacks by integrating the zomato api before use this api register in developer zomato link and get the api key.
 
 Features are
 * city based search reataurants
